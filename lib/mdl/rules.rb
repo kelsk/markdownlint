@@ -790,3 +790,11 @@ rule 'MD047', 'File should end with a single newline character' do
     error_lines
   end
 end
+
+rule 'MD048', 'Images should contain alt text' do
+  tags :images, 
+  aliases 'image-alt-text'
+  check do |doc|
+    doc.matching_text_element_lines(!\[\]\(([A-z\W\w])+\))
+  end
+end
